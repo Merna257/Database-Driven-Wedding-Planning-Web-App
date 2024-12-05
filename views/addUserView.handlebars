@@ -1,0 +1,82 @@
+<section class="section">
+  {{#if problem}}
+    <div class="notification is-danger">There was a problem registering you.
+      Please try again.</div>
+  {{/if}}
+  <h3 class="title is-3">{{title}}</h3>
+
+  <form method="post" action="/register">
+    <div class="field">
+      <label class="label">First Name</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="text"
+          name="fname"
+          required
+          placeholder="Enter first name"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Last Name</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="text"
+          name="lname"
+          required
+          placeholder="Enter last name"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-people-roof"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          class="input"
+          type="email"
+          name="email"
+          required
+          placeholder="Enter e-mail address"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control has-icons-left">
+        <input
+          class="input"
+          type="password"
+          name="password"
+          required
+          placeholder="Enter new password"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div>
+
+    <input type="submit" value="Save" class="button is-success" />
+    <input
+      type="button"
+      value="Cancel"
+      class="button is-danger"
+      onclick="cancelGoHome()"
+    />
+
+  </form>
+</section>

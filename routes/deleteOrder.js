@@ -1,0 +1,25 @@
+const Order = require("../models/order.js");
+
+module.exports = async (req, res, next) => {
+
+  Order.findById(req.params.id, (err, order) => {
+    if (err) {
+      console.error("Could not look up order: " + err);
+    }
+    if (!order) {
+      return res.render("404");
+    }
+
+    res.render("deleteOrderView", {
+      title: "Admin Delete This Order?",
+      data: {
+        id: order._id,
+        sku: order.sku,
+        username: order.username,
+        date: order.purchaseDate,
+        total: order.invoiceTotal.toFixed(2),
+        quantity: order.quantityOrdered,
+      },
+    });
+  });
+};

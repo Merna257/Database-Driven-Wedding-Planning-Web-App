@@ -1,0 +1,65 @@
+<section class="section">
+  {{#if thanks}}
+    <div class="notification is-success">Thanks for your purchase! See your
+      orders below.</div>
+  {{/if}}
+  {{#if problem}}
+    <div class="notification is-danger">There was a problem editing/deleting the
+      order. Please try again.</div>
+  {{/if}}
+  {{#if success}}
+    <div class="notification is-success">Updated order!</div>
+  {{/if}}
+
+  {{#if filteruser}} 
+    <h3 class="title is-3">{{title}} for {{filteruser}}</h3>
+  {{else}}
+    <h3 class="title is-3">{{title}}</h3>
+  {{/if}}
+
+  {{#if data}}
+    <table class="table is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>SKU</th>
+          {{#if manageView}}
+            <th>User</th>
+          {{/if}}
+          <th>Quantity</th>
+          <th>Total</th>
+          {{#if manageView}}
+            <th></th>
+          {{/if}}
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each data}}
+          <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.sku}}</td>
+            {{#if ../manageView}}
+              <td>{{this.username}}</td>
+            {{/if}}
+            <td>{{this.quantity}}</td>
+            <td>${{this.total}}</td>
+            {{#if ../manageView}}
+              <td>
+                <a class="button is-link" href="/manageorders/edit/{{this.id}}">Edit</a>
+                
+                <a class="button is-danger" href="/manageorders/delete/{{this.id}}">Delete</a>
+              </td>
+            {{/if}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  {{else}}
+    <div class="notification is-danger">No Orders found!</div>
+  {{/if}}
+
+</section>

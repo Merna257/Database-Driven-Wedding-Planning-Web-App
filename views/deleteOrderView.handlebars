@@ -1,0 +1,51 @@
+<section class="section">
+  <h3 class="title is-3">{{title}}</h3>
+
+  <form method="post" action="/manageorders/delete">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Order ID:</th>
+          <td>{{data.id}}</td>
+        </tr>
+        <tr>
+          <th>Date: </th>
+          <td>{{data.date}}</td>
+        </tr>
+        <tr>
+          <th>SKU:</th>
+          <td>{{data.sku}}</td>
+        </tr>
+        <tr>
+          <th>User:</th>
+          <td>{{data.username}}</td>
+        </tr>
+        <tr>
+          <th>Quantity:</th>
+          <td>{{data.quantity}}</td>
+        </tr>
+        <tr>
+          <th>Total:</th>
+          <td>{{data.total}}</td>
+        </tr>
+        <input type="hidden" name="id" value="{{data.id}}" />
+
+      </tbody>
+      <tfooter>
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="OK" class="button is-success" />
+            <input
+              type="button"
+              value="Cancel"
+              class="button is-danger"
+              class="cancel"
+              onclick="location.href='/manageorders'"
+            />
+          </td>
+        </tr>
+      </tfooter>
+    </table>
+  </form>
+</section>

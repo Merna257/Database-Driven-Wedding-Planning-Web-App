@@ -1,0 +1,56 @@
+<section class="section">
+  {{#if problem}}
+    <div class="notification is-danger">There was a problem adding/editing the
+      product. Please try again.</div>
+  {{/if}}
+  {{#if success}}
+    <div class="notification is-success">Updated!</div>
+  {{/if}}
+  <h3 class="title is-3">{{title}}</h3>
+  <table class="table is-hoverable is-fullwidth">
+    {{#if data}}
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Quantity in Stock</th>
+          <th></th>
+        </tr>
+      </thead>
+    {{else}}
+      <tr><td colspan="3">No Products found ... Add One!</td></tr>
+    {{/if}}
+    <tbody>
+      {{#each data}}
+        <tr>
+          <td>{{this.sku}}</td>
+          <td>{{this.description}}</td>
+          <td><figure class="image is-96x96"><img
+                src="{{this.image}}"
+                alt="picture of SKU {{this.sku}}"
+                height="100"
+              /></figure></td>
+          <td>${{this.price}}</td>
+          <td>{{this.quantity}}</td>
+          <td>
+            <a class="button is-link" href="/products/edit/{{this.id}}">Edit</a>
+
+            <a
+              class="button is-danger"
+              href="/products/delete/{{this.id}}"
+            >Delete</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+    <tfooter>
+      <tr><td>
+          <button class="button is-primary" onClick="addProduct();">Add New
+            Product</button>
+        </td></tr>
+    </tfooter>
+  </table>
+
+</section>

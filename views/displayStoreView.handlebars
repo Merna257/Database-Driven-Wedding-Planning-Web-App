@@ -1,0 +1,45 @@
+<section class="section">
+  <h2 class="title is-2">M&N</h2>
+    
+  {{#if data}}
+    <div class="columns is-multiline">
+      {{#each data}}
+
+        <div class="column is-one-third">
+          <div class="tile is-ancestor">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">{{this.description}}</p>
+                <p class="subtitle">${{this.price}}</p>
+                <p>sku: {{this.sku}}</p>
+                <p>In stock: {{this.quantity}}</p>
+                <figure class="image is-128x128">
+                  <img src="{{this.image}}" alt="picture of {{this.sku}}" />
+                </figure>
+                <form action="/buy" method="post">
+                  <input
+                    class="input"
+                    style="width:4em"
+                    type="number"
+                    name="desired"
+                    id="desired"
+                    min="1"
+                    max="99"
+                    value="1"
+                  />
+                  <input type="hidden" name="id" value="{{this.id}}" />
+                  <input class="button is-info" type="submit" value="Buy Now" />
+                </form>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+  {{else}}
+    <div class="notification is-danger">No products found!</div>
+
+  {{/if}}
+</section>

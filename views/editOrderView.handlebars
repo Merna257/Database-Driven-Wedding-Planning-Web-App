@@ -1,0 +1,49 @@
+<section class="section">
+  {{#if problem}}
+    <h2>There was a problem editing the order. Please try again.</h2>
+  {{/if}}
+  <h3 class="title is-3">{{title}}</h3>
+
+  <form method="post" action="/manageorders/edit">
+    <div class="field">
+      <label class="label">Order ID:</label>
+      <p>{{data.id}}</p>
+    </div>
+    <div class="field">
+      <label class="label">Date:</label>
+      <p>{{data.date}}</p>
+    </div>
+    <div class="field">
+      <label class="label">User:</label>
+      <p>{{data.username}}</p>
+    </div>
+    <div class="field">
+      <label class="label">SKU:</label>
+      <input type="text" name="sku" required value="{{data.sku}}" />
+    </div>
+    <div class="field">
+      <label class="label">Quantity:</label>
+      <input type="number" name="quantity" required value="{{data.quantity}}" />
+    </div>
+    <div class="field">
+      <label class="label">Total:</label>
+      <input
+        type="number"
+        name="total"
+        step="0.01"
+        required
+        value="{{data.total}}"
+      />
+    </div>
+    <input type="hidden" name="id" value="{{data.id}}" />
+    <div class="field">
+      <input type="submit" value="Save" class="button is-success" />
+      <input
+        type="button"
+        value="Cancel"
+        class="button is-danger"
+        onclick="location.href='/manageorders'"
+      />
+    </div>
+  </form>
+</section>
